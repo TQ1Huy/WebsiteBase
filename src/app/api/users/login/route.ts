@@ -3,10 +3,11 @@ import User from "@/models/userModel";
 import { NextResponse, NextRequest  } from  "next/server";
 import bcrypt from "bcryptjs"; // Import bcrypt for password hashing
 import jwt from "jsonwebtoken"; // Import jsonwebtoken for token generation
-connectDB();
+
 export async function POST(request: NextRequest) {
     console.log("API RUNNING"); 
     try {
+        await connectDB();
         const reqBody = await request.json();
         const { email, password } = reqBody;
     

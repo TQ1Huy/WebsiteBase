@@ -6,12 +6,13 @@ import { send } from "process";
 import { sendEmail } from "@/helpers/mailer";
 
 
-connectDB();
+
 export async function POST(request: NextRequest) {
     console.log("API RUNNING");
     
     
     try {
+        await connectDB();
         const reqBody = await request.json();
         const { username, email, password } = reqBody;
         console.log(reqBody);
